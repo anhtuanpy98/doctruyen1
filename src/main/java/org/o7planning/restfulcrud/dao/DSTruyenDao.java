@@ -35,16 +35,14 @@ public class DSTruyenDao {
 	          // Select e.* from EMPLOYEE e order by e.EMP_NAME, e.EMP_NO
 	 
 	          String sql = "Select e from " + DSTruyen.class.getName() + " e "
-	                  + " order by e.MATRUYEN, e.TENTRUYEN ";
+	                  + " order by e.MATRUYEN";
 	 
 	          // Tạo đối tượng Query.
 	          Query<DSTruyen> query = session.createQuery(sql);
 	 
 	          // Thực hiện truy vấn.
 	          list = query.getResultList();
-	 
-	          
-	 
+
 	          // Commit dữ liệu
 	          session.getTransaction().commit();
 	      } catch (Exception e) {

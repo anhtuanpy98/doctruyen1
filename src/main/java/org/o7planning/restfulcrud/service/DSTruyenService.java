@@ -11,7 +11,7 @@ import org.o7planning.restfulcrud.dao.DSTruyenDao;
 import org.o7planning.restfulcrud.model.DSTruyen;
 
 @Path("/employees")
-public class DSTruyenService {
+public class DSTruyenService{
 	@GET
     @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	public List<DSTruyen> getEmployees_JSON() {

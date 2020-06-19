@@ -1,12 +1,13 @@
 package org.o7planning.restfulcrud.model;
 
-import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -15,38 +16,65 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 
-@XmlRootElement(name = "dstruyen")
+@XmlRootElement(name = "dstruyen1")
 @XmlAccessorType(XmlAccessType.FIELD)
 @Entity
 @Table(name = "DSTruyen")
 public class DSTruyen {
-	private String		TENTRUYEN, TENTACGIA, HINH, DeleteFlag;
-	private int			MATRUYEN;
-	private Set<CTTruyen> cttruyens = new HashSet<CTTruyen>(0);
- 
+	@Column(name = "TENTRUYEN")
+	private String		TENTRUYEN;
 	
+	@Column(name = "TENTACGIA")
+	private String TENTACGIA;
+	
+	@Column(name = "HINH")
+	private String HINH;
+	
+	@Column(name = "DeleteFlag")
+	private String DeleteFlag;
+	
+	@Id
+	@GeneratedValue
+	@Column(name = "MATRUYEN")
+	private Integer		MATRUYEN;
+	
+	//@OneToMany(fetch = FetchType.LAZY, mappedBy = "dstruyen")
+	//private Collection<CTTruyen> cttruyens;
+ 
+
 	public DSTruyen() {
 		
 	}
 	
-
 	
-	public DSTruyen(String tENTRUYEN, String tENTACGIA, String hINH, String deleteFlag, int mATRUYEN,
-			Set<CTTruyen> cttruyens) {
+
+
+
+	public DSTruyen(String tENTRUYEN, String tENTACGIA, String hINH, String deleteFlag, Integer mATRUYEN) {//,
+			//Collection<CTTruyen> cttruyens) {
 		super();
 		TENTRUYEN = tENTRUYEN;
 		TENTACGIA = tENTACGIA;
 		HINH = hINH;
 		DeleteFlag = deleteFlag;
 		MATRUYEN = mATRUYEN;
-		this.cttruyens = cttruyens;
+		//this.cttruyens = cttruyens;
 	}
 
 
 
 
 
-	@Column(name = "TENTRUYEN")
+	public Integer getMATRUYEN() {
+		return MATRUYEN;
+	}
+
+
+	public void setMATRUYEN(Integer mATRUYEN) {
+		MATRUYEN = mATRUYEN;
+	}
+
+
 	public String getTENTRUYEN() {
 		return TENTRUYEN;
 	}
@@ -57,7 +85,7 @@ public class DSTruyen {
 	}
 
 	
-	@Column(name = "TENTACGIA")
+	
 	public String getTENTACGIA() {
 		return TENTACGIA;
 	}
@@ -68,7 +96,7 @@ public class DSTruyen {
 	}
 
 	
-	@Column(name = "HINH")
+	
 	public String getHINH() {
 		return HINH;
 	}
@@ -79,7 +107,7 @@ public class DSTruyen {
 	}
 
 	
-	@Column(name = "DeleteFlag")
+
 	public String getDeleteFlag() {
 		return DeleteFlag;
 	}
@@ -89,30 +117,5 @@ public class DSTruyen {
 		DeleteFlag = deleteFlag;
 	}
 
-	@Id
-	@Column(name = "MATRUYEN")
-	public int getMATRUYEN() {
-		return MATRUYEN;
-	}
-
-
-
-	public void setMATRUYEN(int mATRUYEN) {
-		MATRUYEN = mATRUYEN;
-	}
-	
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "dstruyen")
-	public Set<CTTruyen> getCttruyens() {
-		return cttruyens;
-	}
-
-
-	public void setCttruyens(Set<CTTruyen> cttruyens) {
-		this.cttruyens = cttruyens;
-	}
-	
-	
-	
 
 }
